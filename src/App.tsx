@@ -21,14 +21,14 @@ export class App extends React.Component<State> {
 
   timerId = 0;
 
-  handleRightClick = () => {
+  handleRightMouseClick = () => {
     this.setState(currentState => ({
       ...currentState,
       isClock: false,
     }));
   };
 
-  handleLeftClick = () => {
+  handleLeftMouseClick = () => {
     this.setState(currentState => ({
       ...currentState,
       isClock: true,
@@ -39,15 +39,15 @@ export class App extends React.Component<State> {
     this.timerId = window.setInterval(() => {
       this.setState({ clockName: getRandomName() });
     }, 3300);
-    document.addEventListener('contextmenu', this.handleRightClick);
-    document.addEventListener('click', this.handleLeftClick);
+    document.addEventListener('contextmenu', this.handleRightMouseClick);
+    document.addEventListener('click', this.handleLeftMouseClick);
   }
 
   componentWillUnmount(): void {
     window.clearInterval(this.timerId);
 
-    document.removeEventListener('click', this.handleLeftClick);
-    document.removeEventListener('contextmenu', this.handleRightClick);
+    document.removeEventListener('click', this.handleLeftMouseClick);
+    document.removeEventListener('contextmenu', this.handleRightMouseClick);
   }
 
   render() {
